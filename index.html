@@ -3,669 +3,305 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Candela Technologies · Network X 2026</title>
-<meta name="description" content="Meet Candela Technologies at Network X 2026, Booth H1. Live demos of WiFi 7, AI-driven testing, interop device control, robot testing, WiFi+BLE+HaLow, and cellular AP testing.">
+<title>Candela Technologies at Network X 2026 | Booth H1</title>
+<meta name="description" content="Meet Candela Technologies at Network X 2026 in Vienna, Booth H1. See live demos of Wi-Fi 7, AI-assisted testing, interop device control, robot testing, Wi-Fi + BLE + HaLow, and cellular AP testing.">
 
-<!-- ============================================================
-  NOTES FOR WHOEVER EDITS THIS NEXT
-  - LOGO: search "LOGO PLACEHOLDER" below. Replace the placeholder
-    <div> with an <img src="your-logo.png" alt="Candela Technologies" class="brand-logo">
-    and drop your logo file next to this index.html.
-  - PRODUCT IMAGES: search "PRODUCT IMAGE PLACEHOLDER" (6x, one per
-    demo card). Replace each placeholder <div> with an
-    <img src="..." alt="..."> of the real product photo.
-  - BOOTH: currently "H1" in two places — the nav badge and the
-    hero banner. Search "H1" if it changes.
-  - SCRIPT_URL (Google Apps Script Web App) near the bottom is
-    already wired to your Google Sheet from the previous version.
-=============================================================== -->
+<!--
+  Editing notes
+  - Booth number "H1" appears in the header, the intro, and the event details table.
+  - Product photos: each demo has a <div class="demo-img-placeholder">. Replace it with
+    <img class="demo-img" src="photo.jpg" alt="..."> and put the file next to index.html.
+  - SCRIPT_URL near the bottom is the Google Apps Script web app that writes to the Sheet.
+-->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg:#ffffff;
-    --bg-alt:#f4f6f8;
-    --panel:#ffffff;
-    --panel-2:#eef2f5;
-    --line:#e1e6ea;
-    --line-strong:#cdd6dc;
-
     --navy:#123456;
-    --navy-2:#1d4d76;
-
+    --navy-dark:#0c2640;
     --green:#1b5e20;
     --green-dark:#154b19;
-    --green-soft:rgba(27,94,32,0.10);
-    --green-tint-on-navy:#9fe0ab;
-
-    --steel:#2f6f9e;
-    --steel-soft:rgba(47,111,158,0.10);
-
-    --text:#16283a;
-    --text-muted:#5b6b78;
-    --text-dim:#8b98a3;
-
-    --radius:12px;
-    --maxw:1120px;
+    --text:#1f2d3a;
+    --muted:#566573;
+    --line:#d9dee3;
+    --grey:#f3f5f7;
+    --maxw:1100px;
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--bg);
+    background:#fff;
     color:var(--text);
-    font-family:'Inter',system-ui,sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
+    font-family:'Source Sans 3', Arial, Helvetica, sans-serif;
+    font-size:16px;
+    line-height:1.6;
   }
-
-  h1,h2,h3{
-    font-family:'Space Grotesk',sans-serif;
-    margin:0;
-    letter-spacing:-0.01em;
-    color:var(--navy);
-  }
-
-  .mono{
-    font-family:'JetBrains Mono',monospace;
-    letter-spacing:0.02em;
-  }
-
-  a{color:inherit;}
+  h1,h2,h3{margin:0; color:var(--navy); line-height:1.25;}
+  a{color:var(--green);}
+  img{max-width:100%;}
 
   .wrap{
     max-width:var(--maxw);
     margin:0 auto;
-    padding:0 28px;
+    padding:0 24px;
   }
 
-  :focus-visible{
-    outline:2px solid var(--green);
-    outline-offset:3px;
-  }
-
-  /* ---------- NAV ---------- */
-  header.site{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:rgba(255,255,255,0.94);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
+  /* Header */
+  .site-header{border-bottom:1px solid var(--line);}
+  .site-header .wrap{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:14px;
-    padding:14px 28px;
-    max-width:var(--maxw);
-    margin:0 auto;
-    flex-wrap:wrap;
-  }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    min-width:0;
-  }
-
-  /* LOGO PLACEHOLDER — swap this div for <img class="brand-logo" src="..." alt="Candela Technologies"> */
-  .brand-logo-placeholder{
-    width:38px;
-    height:38px;
-    flex-shrink:0;
-    border:1.5px dashed var(--line-strong);
-    border-radius:8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'JetBrains Mono',monospace;
-    font-size:8px;
-    line-height:1.15;
-    text-align:center;
-    color:var(--text-dim);
-    background:var(--panel-2);
-  }
-  .brand-logo{
-    height:36px;
-    width:auto;
-    flex-shrink:0;
-    display:block;
-  }
-
-  .brand-text{
-    font-family:'Space Grotesk',sans-serif;
-    font-weight:700;
-    font-size:16px;
-    letter-spacing:0.01em;
-    color:var(--navy);
-    white-space:nowrap;
-  }
-  .brand-text span{
-    color:var(--text-muted);
-    font-weight:500;
-  }
-  .nav-right{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .booth-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    background:var(--green);
-    color:#ffffff;
-    font-family:'JetBrains Mono',monospace;
-    font-weight:600;
-    font-size:12px;
-    letter-spacing:0.02em;
-    padding:7px 12px;
-    border-radius:999px;
-    white-space:nowrap;
-  }
-  .nav-tag{
-    font-size:12px;
-    color:var(--text-muted);
-    display:none;
-    white-space:nowrap;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:10px 18px;
-    border-radius:6px;
-    font-weight:600;
-    font-size:14px;
-    text-decoration:none;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:transform .15s ease, background .15s ease, border-color .15s ease;
-    white-space:nowrap;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn-primary{
-    background:var(--green);
-    color:#ffffff;
-  }
-  .btn-primary:hover{background:var(--green-dark);}
-  .btn-ghost{
-    background:transparent;
-    border-color:var(--line-strong);
-    color:var(--navy);
-    font-size:13px;
-    padding:8px 14px;
-  }
-  .btn-ghost:hover{border-color:var(--navy);}
-
-  @media(min-width:780px){ .nav-tag{display:inline;} }
-  @media(max-width:560px){ .btn-ghost{display:none;} }
-
-  /* ---------- HERO ---------- */
-  .hero{
-    padding:72px 0 56px;
-    position:relative;
-    background:
-      radial-gradient(900px 420px at 88% -12%, rgba(27,94,32,0.06), transparent 60%),
-      radial-gradient(700px 380px at 6% -6%, rgba(18,52,86,0.05), transparent 55%);
-  }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:12px;
-    color:var(--navy);
-    background:var(--steel-soft);
-    border:1px solid rgba(47,111,158,0.28);
-    padding:6px 12px;
-    border-radius:999px;
-    margin-bottom:22px;
-  }
-  .eyebrow .dot{
-    width:6px;height:6px;border-radius:50%;
-    background:var(--steel);
-  }
-  .hero h1{
-    font-size:clamp(34px,5.2vw,54px);
-    font-weight:700;
-    line-height:1.08;
-    max-width:18ch;
-  }
-  .hero h1 em{
-    font-style:normal;
-    color:var(--green);
-  }
-  .hero p.lead{
-    margin-top:20px;
-    font-size:17px;
-    color:var(--text-muted);
-    max-width:58ch;
-  }
-  .hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
-    margin-top:30px;
-  }
-  .link-more{
-    font-size:14px;
-    color:var(--text-muted);
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:10px 4px;
-  }
-  .link-more:hover{color:var(--navy);}
-
-  /* Booth banner — the "you must know where we are" callout */
-  .booth-banner{
-    margin-top:34px;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
-    background:var(--green-soft);
-    border:1px solid rgba(27,94,32,0.35);
-    border-radius:var(--radius);
-    padding:18px 22px;
-  }
-  .booth-banner .pin{
-    width:44px;height:44px;
-    flex-shrink:0;
-    border-radius:10px;
-    background:var(--green);
-    color:#ffffff;
-    display:flex;align-items:center;justify-content:center;
-    font-size:20px;
-  }
-  .booth-banner .txt b{
-    display:block;
-    font-family:'Space Grotesk',sans-serif;
-    font-size:17px;
-    color:var(--navy);
-  }
-  .booth-banner .txt span{
-    font-size:13px;
-    color:var(--text-muted);
-  }
-
-  /* ---------- SHOWCASE (what we're demoing) ---------- */
-  #showcase{
-    background:var(--bg-alt);
-  }
-  .showcase-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
     gap:20px;
+    flex-wrap:wrap;
+    padding-top:14px;
+    padding-bottom:14px;
   }
-  @media(max-width:900px){ .showcase-grid{grid-template-columns:repeat(2,1fr);} }
-  @media(max-width:600px){ .showcase-grid{grid-template-columns:1fr;} }
-
-  .demo-card{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-  }
-  /* PRODUCT IMAGE PLACEHOLDER styling — swap the inner div for an <img> */
-  .demo-img-placeholder{
-    aspect-ratio:4/3;
-    width:100%;
-    border-bottom:1px solid var(--line);
-    background:
-      repeating-linear-gradient(45deg, var(--panel-2) 0 10px, #ffffff 10px 20px);
+  .brand-logo{height:90px; width:auto; display:block;}
+  .header-info{
     display:flex;
     align-items:center;
-    justify-content:center;
-    color:var(--text-dim);
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    letter-spacing:0.04em;
-    text-align:center;
-    padding:12px;
+    gap:24px;
+    flex-wrap:wrap;
   }
-  .demo-img{
-    aspect-ratio:4/3;
-    width:100%;
-    object-fit:cover;
-    display:block;
-    border-bottom:1px solid var(--line);
-  }
-  .demo-body{
-    padding:18px 20px 20px;
-  }
-  .demo-body h3{
-    font-size:16px;
-    font-weight:600;
-    margin-bottom:8px;
-  }
-  .demo-body p{
-    font-size:13.5px;
-    color:var(--text-muted);
-    margin:0;
-  }
-
-  /* ---------- SECTIONS ---------- */
-  section{padding:60px 0;}
-  .section-head{
-    max-width:60ch;
-    margin-bottom:36px;
-  }
-  .section-tag{
-    font-size:12px;
-    color:var(--green);
-    font-weight:600;
-    text-transform:uppercase;
-    margin-bottom:10px;
-    display:block;
-  }
-  .section-head h2{
-    font-size:clamp(24px,3.2vw,34px);
-    font-weight:700;
-  }
-  .section-head p{
-    margin-top:14px;
-    color:var(--text-muted);
-    font-size:16px;
-  }
-
-  /* Visit info */
-  .event-grid{
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    gap:20px;
-  }
-  @media(max-width:800px){ .event-grid{grid-template-columns:1fr;} }
-  .card{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:26px;
-  }
-  .event-facts{list-style:none; margin:0; padding:0;}
-  .event-facts li{
-    display:flex;
-    justify-content:space-between;
-    gap:16px;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
-    font-size:14px;
-  }
-  .event-facts li:last-child{border-bottom:none;}
-  .event-facts .k{color:var(--text-muted);}
-  .event-facts .v{
-    font-family:'JetBrains Mono',monospace;
+  .header-event{
     text-align:right;
-    color:var(--navy);
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.4;
   }
-  .event-facts .v.highlight{
-    color:var(--green);
+  .header-event strong{display:block; color:var(--navy); font-size:16px;}
+  @media(max-width:640px){
+    .brand-logo{height:64px;}
+    .header-event{text-align:left;}
+  }
+
+  .btn{
+    display:inline-block;
+    background:var(--green);
+    color:#fff;
+    font:inherit;
     font-weight:600;
+    padding:10px 20px;
+    border:0;
+    border-radius:3px;
+    text-decoration:none;
+    cursor:pointer;
   }
+  .btn:hover{background:var(--green-dark);}
+  .btn:disabled{opacity:.7; cursor:default;}
 
-  .quick-card h3{font-size:18px; margin-bottom:10px;}
-  .quick-card p{color:var(--text-muted); font-size:14px; margin-bottom:18px;}
-
-  /* ---------- FORM (in hero) ---------- */
-  .hero-grid{
+  /* Intro + form */
+  .intro{
+    background:var(--navy);
+    color:#fff;
+    padding:48px 0 56px;
+  }
+  .intro .wrap{
     display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:48px;
+    grid-template-columns:1fr 420px;
+    gap:56px;
     align-items:start;
   }
-  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:32px;} }
-
-  #schedule{scroll-margin-top:90px;}
+  .intro .wrap > *{min-width:0;}
+  @media(max-width:900px){
+    .intro .wrap{grid-template-columns:1fr; gap:24px;}
+    .intro-facts{display:none;}
+  }
+  .intro h1{
+    color:#fff;
+    font-size:clamp(30px,4vw,42px);
+    font-weight:700;
+    margin-bottom:16px;
+  }
+  .intro p{margin:0 0 16px; color:#dbe4ec; font-size:17px; max-width:56ch;}
+  .intro-facts{
+    margin:28px 0 0;
+    padding:0;
+    list-style:none;
+    border-top:1px solid rgba(255,255,255,.2);
+  }
+  .intro-facts li{
+    display:flex;
+    gap:16px;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.2);
+  }
+  .intro-facts span{width:90px; flex-shrink:0; color:#9fb3c6;}
+  .intro-facts b{color:#fff; font-weight:600;}
 
   form{
-    background:#ffffff;
-    border:1px solid var(--line);
-    border-top:4px solid var(--green);
-    border-radius:var(--radius);
-    padding:26px 26px 22px;
-    box-shadow:0 12px 32px rgba(18,52,86,0.14);
-  }
-  .form-head{margin-bottom:20px;}
-  .form-head h2{font-size:22px; font-weight:700;}
-  .form-head p{margin:6px 0 0; font-size:13.5px; color:var(--text-muted);}
-  .field label .opt{color:var(--text-dim);}
-  .contact-line{
-    margin:16px 0 0;
-    font-size:12.5px;
-    color:var(--text-muted);
-  }
-  .contact-line a{color:var(--green-dark); text-decoration:none;}
-  .contact-line a:hover{text-decoration:underline;}
-  .field-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-  }
-  @media(max-width:520px){ .field-row{grid-template-columns:1fr;} }
-  .field{margin-bottom:18px;}
-  .field label{
-    display:block;
-    font-size:12px;
-    color:var(--text-muted);
-    margin-bottom:7px;
-    font-family:'JetBrains Mono',monospace;
-  }
-  .field label .req{color:var(--green-dark);}
-  .field input[type=text],
-  .field input[type=email],
-  .field input[type=tel],
-  .field select,
-  .field textarea{
-    width:100%;
-    background:var(--panel-2);
-    border:1px solid var(--line-strong);
+    background:#fff;
     color:var(--text);
-    border-radius:8px;
-    padding:11px 13px;
-    font-family:'Inter',sans-serif;
-    font-size:14px;
+    padding:24px;
+    border-radius:4px;
   }
-  .field textarea{resize:vertical; min-height:88px;}
-  .field input:focus, .field select:focus, .field textarea:focus{
-    border-color:var(--steel);
+  form h2{font-size:22px; margin-bottom:4px;}
+  #meeting-form p{color:var(--muted);}
+  .form-head p{margin:0 0 18px; font-size:15px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-weight:600; font-size:15px; margin-bottom:4px;}
+  .field label small{font-weight:400; color:var(--muted); font-size:14px;}
+  .field input{
+    width:100%;
+    min-width:0;
+    font:inherit;
+    padding:9px 11px;
+    border:1px solid #b9c2cb;
+    border-radius:3px;
+    background:#fff;
+    color:var(--text);
   }
-  .field select{appearance:none; cursor:pointer;}
-
-  fieldset{
-    border:none;
-    padding:0;
-    margin:0 0 18px;
-  }
-  fieldset legend{
-    font-size:12px;
-    color:var(--text-muted);
-    margin-bottom:9px;
-    font-family:'JetBrains Mono',monospace;
-    padding:0;
-  }
-  .topic-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-  @media(max-width:520px){ .topic-grid{grid-template-columns:1fr;} }
-  .topic-opt{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    background:var(--panel-2);
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:10px 12px;
-    font-size:13px;
-    cursor:pointer;
-  }
-  .topic-opt:has(input:checked){
-    border-color:var(--green);
-    background:var(--green-soft);
-  }
-  .topic-opt input{accent-color:var(--green);}
-
-  .submit-row{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    margin-top:6px;
-  }
-  .submit-row button{
-    border:none;
-    font-family:'Space Grotesk',sans-serif;
-  }
-  .form-note{font-size:12px; color:var(--text-dim);}
+  .field input:focus{outline:2px solid var(--green); outline-offset:0; border-color:var(--green);}
+  .field-row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:14px;}
+  @media(max-width:480px){ .field-row{grid-template-columns:1fr;} }
+  .submit-row{margin-top:6px;}
+  .form-note{margin:10px 0 0; font-size:14px; color:var(--muted);}
+  .form-note a{color:var(--green); text-decoration:none;}
 
   .form-msg{
     display:none;
-    font-size:13px;
-    padding:12px 14px;
-    border-radius:8px;
     margin-top:14px;
-  }
-  .form-msg.error{
-    display:block;
+    padding:10px 12px;
     background:#fdecec;
-    border:1px solid #f3b8b8;
-    color:#a3231f;
+    border:1px solid #f0b4b4;
+    color:#9b1c1c;
+    font-size:14px;
   }
+  .success-state{display:none; padding:12px 0;}
+  .success-state h2{color:var(--green); margin-bottom:8px;}
+  .success-state p{margin:0; color:var(--muted);}
 
-  .success-state{
-    display:none;
-    text-align:center;
-    padding:40px 20px;
-  }
-  .success-state .ring{
-    width:56px;height:56px;border-radius:50%;
-    margin:0 auto 18px;
-    background:var(--green-soft);
-    border:1px solid rgba(27,94,32,0.4);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--green);
-    font-size:22px;
-  }
-  .success-state h3{font-size:20px; margin-bottom:8px;}
-  .success-state p{color:var(--text-muted); font-size:14px;}
+  /* Sections */
+  section{padding:56px 0;}
+  section h2{font-size:28px; margin-bottom:8px;}
+  .section-intro{margin:0 0 32px; color:var(--muted); max-width:62ch;}
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    padding:40px 0 34px;
-    background:var(--bg);
+  .demos{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px 28px;
   }
-  .footer-grid{
+  @media(max-width:900px){ .demos{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:580px){ .demos{grid-template-columns:1fr;} }
+  .demo-img,
+  .demo-img-placeholder{
+    width:100%;
+    aspect-ratio:4/3;
+    display:block;
+    border:1px solid var(--line);
+    margin-bottom:14px;
+  }
+  .demo-img{object-fit:cover;}
+  .demo-img-placeholder{
+    background:var(--grey);
+    color:#8a96a1;
+    font-size:14px;
     display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-    gap:24px;
-    padding-top:26px;
-    border-top:1px solid var(--line);
-    font-size:13px;
-    color:var(--text-dim);
+    align-items:center;
+    justify-content:center;
   }
-  .footer-grid a{
-    color:var(--text-muted);
-    text-decoration:none;
-    margin-right:16px;
+  .demo h3{font-size:19px; margin-bottom:6px;}
+  .demo p{margin:0; color:var(--muted); font-size:15px;}
+
+  #visit{background:var(--grey); border-top:1px solid var(--line);}
+  .visit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
   }
-  .footer-grid a:hover{color:var(--green-dark);}
-  .footer-brand{
-    font-family:'Space Grotesk',sans-serif;
-    color:var(--text-muted);
-    font-size:13px;
+  @media(max-width:800px){ .visit-grid{grid-template-columns:1fr; gap:24px;} }
+  .details{width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line);}
+  .details th, .details td{text-align:left; padding:11px 16px; border-bottom:1px solid var(--line);}
+  .details th{width:32%; color:var(--muted); font-weight:600;}
+  .visit-grid h3{font-size:20px; margin-bottom:8px;}
+  .visit-grid p{margin:0 0 18px; color:var(--muted);}
+
+  footer{
+    background:var(--navy-dark);
+    color:#b8c6d4;
+    font-size:14px;
+    padding:28px 0;
   }
+  footer .wrap{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;}
+  footer a{color:#fff; text-decoration:none; margin-left:20px;}
+  footer a:first-child{margin-left:0;}
+  footer a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="nav">
-<a class="brand" href="https://www.candelatech.com/" target="_blank" rel="noopener">
-  <img class="brand-logo" src="CandelaTechnologies_Logo.jpg" alt="Candela Technologies">
-  <span class="brand-text">CANDELA <span>TECHNOLOGIES</span></span>
-</a>
-    <div class="nav-right">
-      <span class="booth-badge">📍 BOOTH H1</span>
-      <span class="nav-tag mono">NETWORK&nbsp;X&nbsp;2026</span>
-      <a class="btn btn-ghost" href="https://www.candelatech.com/" target="_blank" rel="noopener">candelatech.com ↗</a>
-      <a class="btn btn-primary" href="#schedule">Schedule a meeting</a>
+<header class="site-header">
+  <div class="wrap">
+    <a href="https://www.candelatech.com/" target="_blank" rel="noopener">
+      <img class="brand-logo" src="CandelaTechnologies_Logo.jpg" alt="Candela Technologies">
+    </a>
+    <div class="header-info">
+      <div class="header-event">
+        <strong>Network X 2026, Booth H1</strong>
+        13–15 October, Vienna
+      </div>
+      <a class="btn" href="#schedule">Schedule a meeting</a>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="wrap hero-grid">
+  <section class="intro">
+    <div class="wrap">
       <div>
-        <span class="eyebrow mono"><span class="dot"></span> NETWORK X 2026 · 13–15 OCTOBER · VIENNA</span>
-        <h1>Live demos. Real hardware. <em>Booth H1.</em></h1>
-        <p class="lead">Candela Technologies is bringing six live demos to Network&nbsp;X 2026 — from WiFi&nbsp;7 to AI-driven testing to our autonomous test robot. Book time with our engineers, or just find us on the floor.</p>
-        <div class="hero-actions">
-          <a class="link-more" href="#showcase">See what we're demoing ↓</a>
-        </div>
-
-        <div class="booth-banner">
-          <span class="pin">📍</span>
-          <div class="txt">
-            <b>Find us at Booth H1 — Network X 2026</b>
-            <span>13–15 October · Vienna, Austria</span>
-          </div>
-        </div>
+        <h1>Meet Candela Technologies at Network X 2026</h1>
+        <p>We'll be in Vienna from 13 to 15 October with six live demos of our LANforge test systems, covering Wi-Fi 7, AI-assisted testing, device interop, robot-based testing and more.</p>
+        <p>Book a meeting with one of our engineers, or stop by Booth H1 during show hours.</p>
+        <ul class="intro-facts">
+          <li><span>Booth</span><b>H1</b></li>
+          <li><span>Dates</span><b>13–15 October 2026</b></li>
+          <li><span>Location</span><b>Vienna, Austria</b></li>
+        </ul>
       </div>
 
       <div id="schedule">
         <form id="meeting-form" autocomplete="on">
           <div class="form-head">
-            <span class="section-tag mono">SCHEDULE A MEETING</span>
-            <h2>Grab time with our engineers.</h2>
-            <p>Leave your details and we'll confirm a time to meet at Booth H1.</p>
+            <h2>Schedule a meeting</h2>
+            <p>Send us your details and we'll email you to set a time.</p>
           </div>
 
           <div class="field">
-            <label for="name">Full name <span class="req">*</span></label>
+            <label for="name">Name</label>
             <input type="text" id="name" name="name" required autocomplete="name">
           </div>
           <div class="field">
-            <label for="email">Work email <span class="req">*</span></label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" required autocomplete="email">
           </div>
           <div class="field-row">
             <div class="field">
-              <label for="phone">Mobile <span class="opt">(optional)</span></label>
+              <label for="phone">Mobile <small>(optional)</small></label>
               <input type="tel" id="phone" name="phone" autocomplete="tel">
             </div>
             <div class="field">
-              <label for="company">Company <span class="opt">(optional)</span></label>
+              <label for="company">Company <small>(optional)</small></label>
               <input type="text" id="company" name="company" autocomplete="organization">
             </div>
           </div>
 
           <div class="submit-row">
-            <button class="btn btn-primary" type="submit" id="submit-btn">Schedule a meeting</button>
-            <span class="form-note">Usually confirmed within 1 business day.</span>
+            <button class="btn" type="submit" id="submit-btn">Request meeting</button>
           </div>
 
-          <div class="form-msg error" id="form-error">Something went wrong sending your request — please check your connection and try again.</div>
+          <div class="form-msg" id="form-error">Sorry, your request didn't go through. Please check your connection and try again.</div>
 
           <div class="success-state" id="success-state">
-            <div class="ring">✓</div>
-            <h3>Request sent.</h3>
-            <p>Thanks — we've got your request. We'll follow up by email to confirm a time to meet at Booth H1.</p>
+            <h2>Thank you</h2>
+            <p>We've received your request and will email you shortly to confirm a meeting time at Booth H1.</p>
           </div>
 
-          <p class="contact-line">Prefer to call? <a href="tel:+13603801618">+1&nbsp;(360)&nbsp;380-1618</a> (PST)</p>
+          <p class="form-note">Or call us: <a href="tel:+13603801618">+1 (360) 380-1618</a> (Pacific Time)</p>
         </form>
       </div>
     </div>
@@ -673,116 +309,80 @@
 
   <section id="showcase">
     <div class="wrap">
-      <div class="section-head">
-        <span class="section-tag mono">LIVE AT BOOTH H1</span>
-        <h2>Six demos, running the whole show.</h2>
-        <p>Everything below will be live and hands-on at our booth. Come try it, or book time and we'll walk you through the one you care about.</p>
-      </div>
+      <h2>What we're showing at Booth H1</h2>
+      <p class="section-intro">All six demos run on real hardware at the booth. If there's one you're particularly interested in, mention it when we get in touch and we'll have the right engineer there.</p>
 
-      <div class="showcase-grid">
-        <div class="demo-card">
-          <!-- PRODUCT IMAGE PLACEHOLDER 1 — replace with <img class="demo-img" src="..." alt="WiFi 7 testing"> -->
-          <img class="demo-img" src="..." alt="WiFi 7 testing">
-          <div class="demo-body">
-            <h3>Wi-Fi 7</h3>
-            <p>Live multi-link operation and 6 GHz performance testing with real client emulation.</p>
-          </div>
+      <div class="demos">
+        <div class="demo">
+          <div class="demo-img-placeholder">Photo coming soon</div>
+          <h3>Wi-Fi 7</h3>
+          <p>Multi-link operation and 6 GHz performance testing with real client emulation.</p>
         </div>
-
-        <div class="demo-card">
-          <!-- PRODUCT IMAGE PLACEHOLDER 2 -->
-          <div class="demo-img-placeholder">PRODUCT IMAGE<br>Testing with AI</div>
-          <div class="demo-body">
-            <h3>Testing with AI</h3>
-            <p>AI-assisted test design and results analysis layered on top of LANforge automation.</p>
-          </div>
+        <div class="demo">
+          <div class="demo-img-placeholder">Photo coming soon</div>
+          <h3>Testing with AI</h3>
+          <p>AI-assisted test design and results analysis built on LANforge automation.</p>
         </div>
-
-        <div class="demo-card">
-          <!-- PRODUCT IMAGE PLACEHOLDER 3 -->
-          <div class="demo-img-placeholder">PRODUCT IMAGE<br>Interop Device Control</div>
-          <div class="demo-body">
-            <h3>Interop Device Control &amp; Testing</h3>
-            <p>Control and test real client devices at scale for cross-vendor interoperability.</p>
-          </div>
+        <div class="demo">
+          <div class="demo-img-placeholder">Photo coming soon</div>
+          <h3>Interop Device Control and Testing</h3>
+          <p>Control and test real client devices at scale for cross-vendor interoperability.</p>
         </div>
-
-        <div class="demo-card">
-          <!-- PRODUCT IMAGE PLACEHOLDER 4 -->
-          <div class="demo-img-placeholder">PRODUCT IMAGE<br>Robot Testing</div>
-          <div class="demo-body">
-            <h3>Robot Testing Solution</h3>
-            <p>Our autonomous robot platform for physical, repeatable over-the-air test movement.</p>
-          </div>
+        <div class="demo">
+          <div class="demo-img-placeholder">Photo coming soon</div>
+          <h3>Robot Testing Solution</h3>
+          <p>An autonomous robot platform for repeatable over-the-air testing with physical movement.</p>
         </div>
-
-        <div class="demo-card">
-          <!-- PRODUCT IMAGE PLACEHOLDER 5 -->
-          <div class="demo-img-placeholder">PRODUCT IMAGE<br>Wi-Fi + BLE + HaLow</div>
-          <div class="demo-body">
-            <h3>Wi-Fi + BLE + HaLow, One Tool</h3>
-            <p>Three radios, one box: WiFi, Bluetooth LE, and 802.11ah HaLow in a single test tool.</p>
-          </div>
+        <div class="demo">
+          <div class="demo-img-placeholder">Photo coming soon</div>
+          <h3>Wi-Fi, BLE and HaLow in One Tool</h3>
+          <p>Wi-Fi, Bluetooth LE and 802.11ah HaLow testing from a single system.</p>
         </div>
-
-        <div class="demo-card">
-          <!-- PRODUCT IMAGE PLACEHOLDER 6 -->
-          <div class="demo-img-placeholder">PRODUCT IMAGE<br>Cellular AP Testing</div>
-          <div class="demo-body">
-            <h3>Cellular AP Testing Solution</h3>
-            <p>Combined cellular and WiFi AP testing on one testbed, for converged network gear.</p>
-          </div>
+        <div class="demo">
+          <div class="demo-img-placeholder">Photo coming soon</div>
+          <h3>Cellular AP Testing</h3>
+          <p>Cellular and Wi-Fi AP testing on one testbed, for converged network equipment.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section id="visit">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-tag mono">PLAN YOUR VISIT</span>
-        <h2>Details for the show.</h2>
+    <div class="wrap visit-grid">
+      <div>
+        <h2>Event details</h2>
+        <table class="details">
+          <tr><th>Event</th><td>Network X 2026</td></tr>
+          <tr><th>Dates</th><td>13–15 October 2026</td></tr>
+          <tr><th>Location</th><td>Vienna, Austria</td></tr>
+          <tr><th>Booth</th><td><strong>H1</strong></td></tr>
+        </table>
       </div>
-
-      <div class="event-grid">
-        <div class="card">
-          <ul class="event-facts mono">
-            <li><span class="k">EVENT</span><span class="v">Network X 2026</span></li>
-            <li><span class="k">DATES</span><span class="v">13–15 October 2026</span></li>
-            <li><span class="k">LOCATION</span><span class="v">Vienna, Austria</span></li>
-            <li><span class="k">BOOTH</span><span class="v highlight">H1</span></li>
-          </ul>
-        </div>
-
-        <div class="card quick-card">
-          <h3>Can't lock in a time?</h3>
-          <p>Swing by Booth H1 any time during show floor hours — no appointment needed. If you want a guaranteed slot with an engineer, book ahead instead.</p>
-          <a class="btn btn-primary" href="#schedule">Schedule a meeting</a>
-        </div>
+      <div>
+        <h3>No appointment needed</h3>
+        <p>You're welcome to visit Booth H1 at any time during show hours. If you'd like dedicated time with an engineer, we recommend booking a meeting in advance.</p>
+        <a class="btn" href="#schedule">Schedule a meeting</a>
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        Candela Technologies, Inc.<br>
-        2417 Main Street, Suite 201, Ferndale, WA 98248, USA
-      </div>
-      <div>
-        <a href="https://www.candelatech.com/" target="_blank" rel="noopener">candelatech.com</a>
-        <a href="https://www.linkedin.com/company/candela-technologies-inc." target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.facebook.com/CandelaTech" target="_blank" rel="noopener">Facebook</a>
-      </div>
+    <div>
+      Candela Technologies, Inc.<br>
+      2417 Main Street, Suite 201, Ferndale, WA 98248, USA
+    </div>
+    <div>
+      <a href="https://www.candelatech.com/" target="_blank" rel="noopener">candelatech.com</a>
+      <a href="https://www.linkedin.com/company/candela-technologies-inc." target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.facebook.com/CandelaTech" target="_blank" rel="noopener">Facebook</a>
     </div>
   </div>
 </footer>
 
 <script>
-  // ---- Form submission -> Google Sheet via Apps Script Web App ----
+  // Form submission -> Google Sheet via Apps Script web app
   var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxwhCcCP3qzlwBwNRj7ndQiYvizuRQs716xiQTvfloaLLsuIwY8klGIGqOlm6eaoI/exec";
 
   var form = document.getElementById('meeting-form');
@@ -793,12 +393,6 @@
   form.addEventListener('submit', function(e){
     e.preventDefault();
     errorBox.style.display = 'none';
-
-    if(SCRIPT_URL.indexOf('REPLACE_WITH_YOUR') === 0){
-      errorBox.textContent = 'Form endpoint not configured yet — set SCRIPT_URL in index.html (see README.md).';
-      errorBox.style.display = 'block';
-      return;
-    }
 
     var fd = new FormData(form);
     var payload = {
@@ -823,13 +417,13 @@
       body: JSON.stringify(payload)
     })
     .then(function(){
-      form.querySelectorAll('.form-head, .field, .submit-row').forEach(function(el){ el.style.display = 'none'; });
+      form.querySelectorAll('.form-head, .field, .field-row, .submit-row').forEach(function(el){ el.style.display = 'none'; });
       successBox.style.display = 'block';
     })
     .catch(function(){
       errorBox.style.display = 'block';
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Schedule a meeting';
+      submitBtn.textContent = 'Request meeting';
     });
   });
 </script>
