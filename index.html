@@ -657,7 +657,7 @@
             <span class="form-note">Usually confirmed within 1 business day.</span>
           </div>
 
-          <div class="form-msg error" id="form-error">Something went wrong sending your request — please email <a href="mailto:sales@candelatech.com" style="color:#a3231f">sales@candelatech.com</a> directly.</div>
+          <div class="form-msg error" id="form-error">Something went wrong sending your request — please check your connection and try again.</div>
 
           <div class="success-state" id="success-state">
             <div class="ring">✓</div>
@@ -665,7 +665,7 @@
             <p>Thanks — we've got your request. We'll follow up by email to confirm a time to meet at Booth H1.</p>
           </div>
 
-          <p class="contact-line">Prefer email? <a href="mailto:sales@candelatech.com">sales@candelatech.com</a> · <a href="tel:+13603801618">+1&nbsp;(360)&nbsp;380-1618</a> (PST)</p>
+          <p class="contact-line">Prefer to call? <a href="tel:+13603801618">+1&nbsp;(360)&nbsp;380-1618</a> (PST)</p>
         </form>
       </div>
     </div>
@@ -774,7 +774,6 @@
       </div>
       <div>
         <a href="https://www.candelatech.com/" target="_blank" rel="noopener">candelatech.com</a>
-        <a href="mailto:sales@candelatech.com">sales@candelatech.com</a>
         <a href="https://www.linkedin.com/company/candela-technologies-inc." target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://www.facebook.com/CandelaTech" target="_blank" rel="noopener">Facebook</a>
       </div>
@@ -814,13 +813,16 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
+    // no-cors: Apps Script redirects its reply to another domain, which the
+    // browser blocks from being read. The row is still written; the response
+    // is just opaque, so only a network failure lands in .catch().
     fetch(SCRIPT_URL, {
       method: 'POST',
+      mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload)
     })
-    .then(function(res){
-      if(!res.ok) throw new Error('Bad response');
+    .then(function(){
       form.querySelectorAll('.form-head, .field, .submit-row').forEach(function(el){ el.style.display = 'none'; });
       successBox.style.display = 'block';
     })
