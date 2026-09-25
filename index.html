@@ -417,40 +417,36 @@
   .quick-card h3{font-size:18px; margin-bottom:10px;}
   .quick-card p{color:var(--text-muted); font-size:14px; margin-bottom:18px;}
 
-  /* ---------- FORM ---------- */
-  #schedule{
-    background:var(--navy);
-    border-top:1px solid var(--line);
-  }
-  #schedule .section-tag{color:var(--green-tint-on-navy);}
-  #schedule .section-head h2{color:#ffffff;}
-  #schedule .form-side p{color:#c3d2e0;}
-  .form-shell{
+  /* ---------- FORM (in hero) ---------- */
+  .hero-grid{
     display:grid;
-    grid-template-columns:0.9fr 1.1fr;
+    grid-template-columns:1.15fr 0.85fr;
     gap:48px;
     align-items:start;
   }
-  @media(max-width:840px){ .form-shell{grid-template-columns:1fr;} }
+  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:32px;} }
 
-  .form-side .contact-line{
-    margin-top:24px;
-    font-size:14px;
-    color:#c3d2e0;
-  }
-  .form-side .contact-line a{
-    color:var(--green-tint-on-navy);
-    text-decoration:none;
-  }
-  .form-side .contact-line a:hover{text-decoration:underline;}
+  #schedule{scroll-margin-top:90px;}
 
   form{
     background:#ffffff;
     border:1px solid var(--line);
+    border-top:4px solid var(--green);
     border-radius:var(--radius);
-    padding:28px;
-    box-shadow:0 8px 24px rgba(0,0,0,0.18);
+    padding:26px 26px 22px;
+    box-shadow:0 12px 32px rgba(18,52,86,0.14);
   }
+  .form-head{margin-bottom:20px;}
+  .form-head h2{font-size:22px; font-weight:700;}
+  .form-head p{margin:6px 0 0; font-size:13.5px; color:var(--text-muted);}
+  .field label .opt{color:var(--text-dim);}
+  .contact-line{
+    margin:16px 0 0;
+    font-size:12.5px;
+    color:var(--text-muted);
+  }
+  .contact-line a{color:var(--green-dark); text-decoration:none;}
+  .contact-line a:hover{text-decoration:underline;}
   .field-row{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -611,21 +607,66 @@
 
 <main>
   <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow mono"><span class="dot"></span> NETWORK X 2026 · 13–15 OCTOBER · VIENNA</span>
-      <h1>Live demos. Real hardware. <em>Booth H1.</em></h1>
-      <p class="lead">Candela Technologies is bringing six live demos to Network&nbsp;X 2026 — from WiFi&nbsp;7 to AI-driven testing to our autonomous test robot. Book time with our engineers, or just find us on the floor.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#schedule">Schedule a meeting</a>
-        <a class="link-more" href="#showcase">See what we're demoing ↓</a>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow mono"><span class="dot"></span> NETWORK X 2026 · 13–15 OCTOBER · VIENNA</span>
+        <h1>Live demos. Real hardware. <em>Booth H1.</em></h1>
+        <p class="lead">Candela Technologies is bringing six live demos to Network&nbsp;X 2026 — from WiFi&nbsp;7 to AI-driven testing to our autonomous test robot. Book time with our engineers, or just find us on the floor.</p>
+        <div class="hero-actions">
+          <a class="link-more" href="#showcase">See what we're demoing ↓</a>
+        </div>
+
+        <div class="booth-banner">
+          <span class="pin">📍</span>
+          <div class="txt">
+            <b>Find us at Booth H1 — Network X 2026</b>
+            <span>13–15 October · Vienna, Austria</span>
+          </div>
+        </div>
       </div>
 
-      <div class="booth-banner">
-        <span class="pin">📍</span>
-        <div class="txt">
-          <b>Find us at Booth H1 — Network X 2026</b>
-          <span>13–15 October · Vienna, Austria</span>
-        </div>
+      <div id="schedule">
+        <form id="meeting-form" autocomplete="on">
+          <div class="form-head">
+            <span class="section-tag mono">SCHEDULE A MEETING</span>
+            <h2>Grab time with our engineers.</h2>
+            <p>Leave your details and we'll confirm a time to meet at Booth H1.</p>
+          </div>
+
+          <div class="field">
+            <label for="name">Full name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Work email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Mobile <span class="opt">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="company">Company <span class="opt">(optional)</span></label>
+              <input type="text" id="company" name="company" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn btn-primary" type="submit" id="submit-btn">Schedule a meeting</button>
+            <span class="form-note">Usually confirmed within 1 business day.</span>
+          </div>
+
+          <div class="form-msg error" id="form-error">Something went wrong sending your request — please email <a href="mailto:sales@candelatech.com" style="color:#a3231f">sales@candelatech.com</a> directly.</div>
+
+          <div class="success-state" id="success-state">
+            <div class="ring">✓</div>
+            <h3>Request sent.</h3>
+            <p>Thanks — we've got your request. We'll follow up by email to confirm a time to meet at Booth H1.</p>
+          </div>
+
+          <p class="contact-line">Prefer email? <a href="mailto:sales@candelatech.com">sales@candelatech.com</a> · <a href="tel:+13603801618">+1&nbsp;(360)&nbsp;380-1618</a> (PST)</p>
+        </form>
       </div>
     </div>
   </section>
@@ -722,90 +763,6 @@
     </div>
   </section>
 
-  <section id="schedule">
-    <div class="wrap">
-      <div class="form-shell">
-        <div class="form-side">
-          <span class="section-tag mono">SCHEDULE A MEETING</span>
-          <h2>Grab time with our engineers.</h2>
-          <p>Tell us a bit about what you're testing and when you'll be on the floor. We'll confirm a time and a person to meet with before the show starts.</p>
-          <p class="contact-line">Prefer email? Write to <a href="mailto:sales@candelatech.com">sales@candelatech.com</a> or call <a href="tel:+13603801618">+1&nbsp;(360)&nbsp;380-1618</a> (PST, GMT&#8209;8).</p>
-        </div>
-
-        <div>
-          <form id="meeting-form" autocomplete="on">
-            <div class="field-row">
-              <div class="field">
-                <label for="name">Full name <span class="req">*</span></label>
-                <input type="text" id="name" name="name" required autocomplete="name">
-              </div>
-              <div class="field">
-                <label for="email">Work email <span class="req">*</span></label>
-                <input type="email" id="email" name="email" required autocomplete="email">
-              </div>
-            </div>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="company">Company <span class="req">*</span></label>
-                <input type="text" id="company" name="company" required autocomplete="organization">
-              </div>
-              <div class="field">
-                <label for="title">Job title</label>
-                <input type="text" id="title" name="title" autocomplete="organization-title">
-              </div>
-            </div>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel">
-              </div>
-              <div class="field">
-                <label for="day">Preferred day</label>
-                <select id="day" name="day">
-                  <option value="Tue 13 Oct">Tue 13 Oct</option>
-                  <option value="Wed 14 Oct">Wed 14 Oct</option>
-                  <option value="Thu 15 Oct">Thu 15 Oct</option>
-                  <option value="No preference">No preference</option>
-                </select>
-              </div>
-            </div>
-
-            <fieldset>
-              <legend>Topics of interest</legend>
-              <div class="topic-grid">
-                <label class="topic-opt"><input type="checkbox" name="topics" value="Wi-Fi 7"> Wi-Fi 7</label>
-                <label class="topic-opt"><input type="checkbox" name="topics" value="Testing with AI"> Testing with AI</label>
-                <label class="topic-opt"><input type="checkbox" name="topics" value="Interop Device Control and Testing"> Interop device control &amp; testing</label>
-                <label class="topic-opt"><input type="checkbox" name="topics" value="Robot Testing Solution"> Robot testing solution</label>
-                <label class="topic-opt"><input type="checkbox" name="topics" value="Wi-Fi + BLE + HaLow"> Wi-Fi + BLE + HaLow</label>
-                <label class="topic-opt"><input type="checkbox" name="topics" value="Cellular AP Testing"> Cellular AP testing</label>
-              </div>
-            </fieldset>
-
-            <div class="field">
-              <label for="message">Anything specific you want to cover?</label>
-              <textarea id="message" name="message" placeholder="e.g. we're evaluating LANforge against a competing traffic generator for a mesh testbed..."></textarea>
-            </div>
-
-            <div class="submit-row">
-              <button class="btn btn-primary" type="submit" id="submit-btn">Send meeting request</button>
-              <span class="form-note">Usually confirmed within 1 business day.</span>
-            </div>
-
-            <div class="form-msg error" id="form-error">Something went wrong sending your request — please email <a href="mailto:sales@candelatech.com" style="color:#a3231f">sales@candelatech.com</a> directly.</div>
-
-            <div class="success-state" id="success-state">
-              <div class="ring">✓</div>
-              <h3>Request sent.</h3>
-              <p>Thanks — we've got your request. We'll follow up by email to confirm a time to meet at Booth H1.</p>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
@@ -845,16 +802,11 @@
     }
 
     var fd = new FormData(form);
-    var topics = fd.getAll('topics').join(', ');
     var payload = {
       name: fd.get('name'),
       email: fd.get('email'),
-      company: fd.get('company'),
-      title: fd.get('title'),
       phone: fd.get('phone'),
-      day: fd.get('day'),
-      topics: topics,
-      message: fd.get('message'),
+      company: fd.get('company'),
       submittedAt: new Date().toISOString(),
       source: 'Network X 2026 landing page'
     };
@@ -869,13 +821,13 @@
     })
     .then(function(res){
       if(!res.ok) throw new Error('Bad response');
-      form.querySelectorAll('.field, fieldset, .submit-row').forEach(function(el){ el.style.display = 'none'; });
+      form.querySelectorAll('.form-head, .field, .submit-row').forEach(function(el){ el.style.display = 'none'; });
       successBox.style.display = 'block';
     })
     .catch(function(){
       errorBox.style.display = 'block';
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send meeting request';
+      submitBtn.textContent = 'Schedule a meeting';
     });
   });
 </script>
